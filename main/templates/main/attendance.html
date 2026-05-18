@@ -1,0 +1,131 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="card shadow-lg border-0 p-5">
+
+        <h2 class="mb-4">
+            📋 Mark Attendance
+        </h2>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <!-- STUDENT -->
+            <div class="mb-3">
+
+                <label class="form-label">
+                    Student
+                </label>
+
+                <select
+                    name="student"
+                    class="form-select"
+                    required>
+
+                    {% for s in students %}
+
+                    <option value="{{ s.id }}">
+                        {{ s.name }}
+                    </option>
+
+                    {% endfor %}
+
+                </select>
+
+            </div>
+
+            <!-- SUBJECT -->
+            <div class="mb-3">
+
+                <label class="form-label">
+                    Subject
+                </label>
+
+                <select
+                    name="subject"
+                    class="form-select"
+                    required>
+
+                    {% for sub in subjects %}
+
+                    <option value="{{ sub.id }}">
+                        {{ sub.name }}
+                    </option>
+
+                    {% endfor %}
+
+                </select>
+
+            </div>
+
+            <!-- WEEK -->
+            <div class="mb-3">
+
+                <label class="form-label">
+                    Week
+                </label>
+
+                <input
+                    type="number"
+                    name="week"
+                    class="form-control"
+                    min="1"
+                    max="15"
+                    required>
+
+            </div>
+
+            <!-- STATUS -->
+            <div class="mb-3">
+
+                <label class="form-label">
+                    Status
+                </label>
+
+                <select
+                    name="status"
+                    class="form-select">
+
+                    <option value="present">✅ Keldi</option>
+<option value="late">🕒 Kechikdi</option>
+<option value="excused">📄 Sababli kelmadi</option>
+<option value="absent">❌ Sababsiz kelmadi</option>
+
+                </select>
+
+            </div>
+
+            <!-- REASON -->
+            <div class="mb-3">
+
+                <label class="form-label">
+                    Reason
+                </label>
+
+                <textarea
+                    name="reason"
+                    class="form-control"
+                    rows="3"></textarea>
+
+            </div>
+
+            <!-- BUTTON -->
+            <button
+                type="submit"
+                class="btn btn-primary w-100">
+
+                💾 Save Attendance
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

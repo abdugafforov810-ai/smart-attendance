@@ -1,0 +1,194 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <!-- STATISTICS CARDS -->
+
+    <div class="row g-4 mb-4">
+
+        <div class="col-md-3">
+
+            <div class="card shadow border-0 bg-primary text-white">
+
+                <div class="card-body">
+
+                    <h5>Total Students</h5>
+
+                    <h2>{{ students_count }}</h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card shadow border-0 bg-success text-white">
+
+                <div class="card-body">
+
+                    <h5>Total Subjects</h5>
+
+                    <h2>{{ subjects_count }}</h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card shadow border-0 bg-dark text-white">
+
+                <div class="card-body">
+
+                    <h5>Total Attendance</h5>
+
+                    <h2>{{ attendance_count }}</h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card shadow border-0 bg-warning text-dark">
+
+                <div class="card-body">
+
+                    <h5>Attendance Rate</h5>
+
+                    <h2>{{ percent }}%</h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- STATUS COUNTS -->
+
+    <div class="row mb-4">
+
+        <div class="col-md-3">
+
+            <div class="alert alert-success shadow-sm">
+
+                ✅ Present:
+                <strong>{{ present_count }}</strong>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="alert alert-warning shadow-sm">
+
+                🕒 Late:
+                <strong>{{ late_count }}</strong>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="alert alert-danger shadow-sm">
+
+                ❌ Absent:
+                <strong>{{ absent_count }}</strong>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="alert alert-info shadow-sm">
+
+                📄 Excused:
+                <strong>{{ excused_count }}</strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- STUDENT ANALYTICS -->
+
+    <div class="card shadow border-0 p-4">
+
+        <h3 class="mb-4">
+
+            🎓 Student Analytics
+
+        </h3>
+
+        <div class="table-responsive">
+
+            <table class="table table-bordered table-hover align-middle">
+
+                <thead class="table-dark">
+
+                    <tr>
+
+                        <th>Student</th>
+                        <th>Group</th>
+                        <th>Present</th>
+                        <th>Absent</th>
+                        <th>Score</th>
+                        <th>Percent</th>
+                        <th>Status</th>
+                        <th>Exam</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for s in student_data %}
+
+                    <tr>
+
+                        <td>{{ s.name }}</td>
+
+                        <td>{{ s.group }}</td>
+
+                        <td>{{ s.present }}</td>
+
+                        <td>{{ s.absent }}</td>
+
+                        <td>{{ s.score }}</td>
+
+                        <td>{{ s.percent }}%</td>
+
+                        <td>{{ s.student_status }}</td>
+
+                        <td>{{ s.exam_access }}</td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
